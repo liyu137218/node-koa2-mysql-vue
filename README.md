@@ -18,16 +18,15 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-
 #run server at localhost:9527
 ```
+# 改造
+*  nodemon  自动监听服务 有改变自更新
+*  暂时删除token模块 改为localstorage  
+## 需要进一步掌握的东西
+1. mysql和sequelize之间的操作
+2. 结构划分
+3. 代理 反代理 接口 
+
 ## 引用
 [全栈开发实战：用Vue2+Koa1开发完整的前后端项目（更新Koa2）](https://molunerfinn.com/Vue+Koa/)
