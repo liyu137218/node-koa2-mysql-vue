@@ -1,3 +1,7 @@
+/* 
+这里是数据库的操作
+*/
+
 const db = require('../config/db')
 const todoListDb = db.todoList
 const User = todoListDb.import('../schema/user.js')
@@ -8,7 +12,7 @@ class UserModel {
    * @param name  姓名
    * @returns {Promise.<*>}
    */
-  static async findUserByName (name) {
+  static async findUserByName(name) {
     const userInfo = await User.findOne({
       where: {
         name
@@ -22,7 +26,7 @@ class UserModel {
    * @param user
    * @returns {Promise.<boolean>}
    */
-  static async createUser (user) {
+  static async createUser(user) {
     await User.create({
       'name': user.name,
       'password': user.password

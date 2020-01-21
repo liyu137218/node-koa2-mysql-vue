@@ -1,8 +1,11 @@
-const userModel = require('../models/user')
+const userModel = require('../models/user')  //获取数据库信息
 // const jwt = require('jsonwebtoken')
 const secret = require('../config/secret.json')
 // const bcrypt = require('bcryptjs')
 
+/* 
+这里是接口具体逻辑实现
+*/
 class UserController {
   /**
    * 登录

@@ -1,5 +1,7 @@
 /* jshint indent: 2 */
-
+/* 
+数据库的映射数据模型
+*/
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define('user', {
     id: {
