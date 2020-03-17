@@ -1,4 +1,4 @@
-/* 
+/*
 这里是数据库的操作
 */
 
@@ -12,7 +12,7 @@ class UserModel {
    * @param name  姓名
    * @returns {Promise.<*>}
    */
-  static async findUserByName(name) {
+  static async findUserByName (name) {
     const userInfo = await User.findOne({
       where: {
         name
@@ -26,10 +26,10 @@ class UserModel {
    * @param user
    * @returns {Promise.<boolean>}
    */
-  static async createUser(user) {
+  static async createUser (user) {
     await User.create({
-      'name': user.name,
-      'password': user.password
+      name: user.name,
+      password: user.password
     })
     return true
   }

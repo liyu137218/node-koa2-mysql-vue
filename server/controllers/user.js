@@ -1,9 +1,8 @@
-const userModel = require('../models/user')  //获取数据库信息
-// const jwt = require('jsonwebtoken')
-const secret = require('../config/secret.json')
-// const bcrypt = require('bcryptjs')
-
-/* 
+const userModel = require('../models/user') // 获取数据库信息
+const jwt = require('jsonwebtoken')
+const secret = require('../config/secret.json') // {"sign": "todoList"}  'vue-koa-demo'/ 指定密钥，这是之后用来判断token合法性的标志
+const bcrypt = require('bcryptjs')
+/*
 这里是接口具体逻辑实现
 */
 class UserController {
@@ -12,11 +11,9 @@ class UserController {
    * @param ctx
    * @returns {Promise.<void>}
    */
-  static async postLogin(ctx) {
+  static async postLogin (ctx) {
     const data = ctx.request.body
-    const user = await userModel.findUserByName(data.name)  // 查询用户
-    console.log('登录 查询厚的用户信息', user);
-
+    const user = await userModel.findUserByName(data.name) // 查询用户
     // 判断用户是否存在
     if (user) {
       // 判断前端传递的用户密码是否与数据库密码一致
@@ -26,11 +23,14 @@ class UserController {
           name: user.name,
           id: user.id
         }
-        // const token = jwt.sign(userToken, secret.sign, {expiresIn: '1h'})  // 签发token
+        const token = jwt.sign(userToken, secret.sign, { expiresIn: '1h' }) // 签发token
         ctx.body = {
           message: '成功',
-          userToken,
-          code: 1
+          bean: {
+            token
+          },
+          code: 1,
+          userToken
         }
       } else {
         ctx.body = {
@@ -51,13 +51,13 @@ class UserController {
    * @param ctx
    * @returns {Promise.<void>}
    */
-  static async createUser(ctx) {
+  static async createUser (ctx) {
     const user = ctx.request.body
-    console.log('user', user);
+    console.log('user', user)
 
     if (user.password && user.name) {
       const existUser = await userModel.findUserByName(user.name)
-      console.log('existUser', existUser);
+      console.log('existUser', existUser)
 
       if (existUser) {
         ctx.body = {
@@ -66,25 +66,25 @@ class UserController {
         }
       } else {
         // 密码加密
-        // const salt = bcrypt.genSaltSync()
-        // const hash = bcrypt.hashSync(user.password, salt)
-        // user.password = hash
+        // const salt = bcrypt.genSaltSync();
+        // const hash = bcrypt.hashSync(user.password, salt);
+        // user.password = hash;
         await userModel.createUser(user)
         const newUser = await userModel.findUserByName(user.name)
 
         // 签发token
-        // const userToken = {
-        //   name: newUser.name,
-        //   id: newUser.id
-        // }
-        // const token = jwt.sign(userToken, secret.sign, {expiresIn: '1h'})
+        const userToken = {
+          name: newUser.name,
+          id: newUser.id
+        }
+        const token = jwt.sign(userToken, secret.sign, { expiresIn: '1h' })
 
         ctx.body = {
           code: 1,
           message: '创建成功',
-          // bean: {
-          //   token
-          // }
+          bean: {
+            token
+          }
         }
       }
     } else {
@@ -100,7 +100,7 @@ class UserController {
    * @param ctx
    * @returns {Promise.<void>}
    */
-  static async getUserName(ctx) {
+  static async getUserName (ctx) {
     const user = ctx.user
     if (user) {
       ctx.body = {
@@ -114,9 +114,7 @@ class UserController {
         message: '获取用户信息失败'
       }
     }
-
   }
 }
 
 module.exports = UserController
-

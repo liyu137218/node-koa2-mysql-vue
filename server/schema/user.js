@@ -6,12 +6,12 @@ module.exports = function (sequelize, DataTypes) {
   return sequelize.define('user', {
     id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
+      allowNull: false,// 是否允许为NULL
+      primaryKey: true, // 主键
+      autoIncrement: true// 是否自增
     },
     name: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(50), // 最大长度为50的字符串
       allowNull: false
     },
     password: {

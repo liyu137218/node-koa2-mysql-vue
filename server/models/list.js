@@ -1,6 +1,6 @@
-const db = require('../config/db')
-const todoList = db.todoList
-const List = todoList.import('../schema/list')
+const db = require("../config/db");
+const todoList = db.todoList;
+const List = todoList.import("../schema/list");
 
 class ListModel {
   /**
@@ -8,15 +8,15 @@ class ListModel {
    * @param userId  用户ID
    * @returns {Promise.<*>}
    */
-  static async getTodoList (user_id, status) {
+  static async getTodoList(user_id, status) {
     const todoList = await List.findAll({
       where: {
         user_id,
         status
       },
-      attributes: ['id', 'content', 'status']
-    })
-    return todoList
+      attributes: ["id", "content", "status"]
+    });
+    return todoList;
   }
 
   /**
@@ -24,13 +24,13 @@ class ListModel {
    * @param data
    * @returns {Promise.<boolean>}
    */
-  static async createTodoList (data) {
+  static async createTodoList(data) {
     await List.create({
-      'user_id': data.user_id,
-      'content': data.content,
-      'status': data.status
-    })
-    return true
+      user_id: data.user_id,
+      content: data.content,
+      status: data.status
+    });
+    return true;
   }
 
   /**
@@ -38,14 +38,14 @@ class ListModel {
    * @param id listID
    * @returns {Promise.<boolean>}
    */
-  static async destroyTodoList (id, user_id) {
+  static async destroyTodoList(id, user_id) {
     await List.destroy({
       where: {
         id,
         user_id
       }
-    })
-    return true
+    });
+    return true;
   }
 
   /**
@@ -54,18 +54,21 @@ class ListModel {
    * @param status  事项的状态
    * @returns {Promise.<boolean>}
    */
-  static async updateTodoList (id, status, user_id) {
-    await List.update({
-      status
-    }, {
-      where: {
-        id,
-        user_id
+  static async updateTodoList(id, status, user_id) {
+    await List.update(
+      {
+        status
       },
-      fields: ['status']
-    })
-    return true
+      {
+        where: {
+          id,
+          user_id
+        },
+        fields: ["status"]
+      }
+    );
+    return true;
   }
 }
 
-module.exports = ListModel
+module.exports = ListModel;
