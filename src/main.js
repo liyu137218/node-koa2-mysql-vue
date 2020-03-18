@@ -5,7 +5,9 @@ import Vue from "vue";
 import App from "./App";
 import router from "./router";
 import axios from "axios";
-axios.defaults.withCredentials = true;
+const baseUrl= process.env.NODE_ENV == "development"? "http://192.168.8.36:9528/mysql/dist": "http://47.105.191.153:8899/mysql/dist"
+axios.defaults.baseURL = baseUrl
+// axios.defaults.withCredentials = true;
 // axios.interceptors.request.use(
 //   function(config) {
 //     // Do something before request is sent

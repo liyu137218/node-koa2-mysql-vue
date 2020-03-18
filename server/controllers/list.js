@@ -6,7 +6,7 @@ class ListController {
    * @param ctx
    * @returns {Promise.<void>}
    */
-  static async getTodoList(ctx) {
+  static async getTodoList (ctx) {
     const data = ctx.request.query
     if (data) {
       const todoList = await ListModel.getTodoList(data.user_id, data.status)
@@ -30,7 +30,7 @@ class ListController {
    * @param ctx
    * @returns {Promise.<void>}
    */
-  static async createTodoList(ctx) {
+  static async createTodoList (ctx) {
     let todoList = ctx.request.body
     if (todoList) {
       todoList.user_id = ctx.user.id
@@ -52,7 +52,7 @@ class ListController {
    * @param ctx
    * @returns {Promise.<void>}
    */
-  static async destroyTodoList(ctx) {
+  static async destroyTodoList (ctx) {
     const { id } = ctx.request.body
     if (id && !isNaN(id)) {
       await ListModel.destroyTodoList(id, ctx.user.id)
@@ -73,7 +73,7 @@ class ListController {
    * @param ctx
    * @returns {Promise.<void>}
    */
-  static async updateTodoList(ctx) {
+  static async updateTodoList (ctx) {
     const data = ctx.request.body
 
     if (data) {

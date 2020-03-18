@@ -34,6 +34,7 @@
 </template>
 
 <script>
+// import { log } from "util";
 /* eslint-disable */
 export default {
   data() {
@@ -41,6 +42,9 @@ export default {
       user: "",
       password: ""
     };
+  },
+  mounted() {
+    console.log(process.env.NODE_ENV);
   },
   methods: {
     login() {

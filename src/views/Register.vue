@@ -5,29 +5,25 @@
         <h3>注册</h3>
       </el-col>
     </el-row>
-    <el-row type="flex"
-            justify="center"
-            class="mb-20">
+    <el-row type="flex" justify="center" class="mb-20">
       <el-col :span="6">
-        <el-input placeholder="请输入用户名"
-                  v-model="user"></el-input>
+        <el-input placeholder="请输入用户名" v-model="user"></el-input>
       </el-col>
     </el-row>
-    <el-row type="flex"
-            justify="center"
-            class="mb-20">
+    <el-row type="flex" justify="center" class="mb-20">
       <el-col :span="6">
-        <el-input placeholder="请输入密码"
-                  type="password"
-                  v-model="password"></el-input>
+        <el-input
+          placeholder="请输入密码"
+          type="password"
+          v-model="password"
+        ></el-input>
       </el-col>
     </el-row>
-    <el-row type="flex"
-            justify="center">
+    <el-row type="flex" justify="center">
       <el-col :span="6">
-        <el-button @click="register"
-                   class="wd-full"
-                   type="primary">注册</el-button>
+        <el-button @click="register" class="wd-full" type="primary"
+          >注册</el-button
+        >
         <p>
           已有账号，
           <router-link to="login">立即登录</router-link>
@@ -40,14 +36,14 @@
 <script>
 /* eslint-disable */
 export default {
-  data () {
+  data() {
     return {
       user: "",
       password: ""
     };
   },
   methods: {
-    register () {
+    register() {
       const data = {
         name: this.user,
         password: this.password
