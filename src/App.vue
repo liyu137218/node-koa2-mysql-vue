@@ -1,6 +1,11 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png" />
+    <h2>李瑜初探全栈</h2>
+    <p>1如何搭建/连接/操作数据库</p>
+    <p>2部署接口,接收和返回信息</p>
+    <p>3域名/端口</p>
+    <p>vue2.X + vue-router + koa2 + mysql + sequelize</p>
     <router-view></router-view>
   </div>
 </template>

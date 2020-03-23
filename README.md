@@ -39,3 +39,11 @@ npm run build --report
 ## 引用
 
 [全栈开发实战：用 Vue2+Koa1 开发完整的前后端项目（更新 Koa2）](https://molunerfinn.com/Vue+Koa/)
+
+### 说明
+
+0. const baseUrl= process.env.NODE_ENV == "development"? "http://192.168.8.36:9528/mysql/dist": "http://47.105.191.153:8899/mysql/dist"
+
+1. 本地开发 检测接口 9528 服务器改为 8899
+1. 不需要 proxy 代理了 调整了相关代码
+1.
