@@ -3,38 +3,14 @@
 > vue2.X + vue-router + koa2 + mysql + sequelize + jwt = todoList
 > 功能包括：登陆，注册，一个包括增删改查的 list
 
-启动服务 npm run server
-启动项目 npm run dev
-路由修改为 hash
-
-## Build Setup
-
-```bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-#run server at localhost:9527
-```
+- 启动服务 npm run server
+- 启动项目 npm run dev
+  > 路由修改为 hash
 
 # 改造
 
 - nodemon 自动监听服务 有改变自更新
 - 暂时删除 token 模块 改为 localstorage
-
-## 需要进一步掌握的东西
-
-1. mysql 和 sequelize 之间的操作
-2. 结构划分
-3. 代理 反代理 接口
 
 ## 引用
 
@@ -47,3 +23,25 @@ npm run build --report
 1. 本地开发 检测接口 9528 服务器改为 8899
 1. 不需要 proxy 代理了 调整了相关代码
 1.
+
+### 整体结构展示
+
+```
+数据库操作
+scheme.js 数据库模块Sequelize
+db.js 数据库连接Sequelize
+models.js  引入数据库模块和链接 具体操作数据库返回对应数据
+
+koa操作
+router.js
+引入数据库模型
+引入koa-router
+router
+            .post('url',  async fn(ctx) {  ctx.request.query  查询数据库 await  返回 ctx.body={}  })
+            .get('url',     controllers模块分离)
+module.exports=
+
+app.js
+require koa
+koa.use(router)
+```
