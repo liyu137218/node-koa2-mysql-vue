@@ -15,7 +15,7 @@
     "server": "nodemon app.js"
   },
   "dependencies": {
-    "axios": "0.16.1",
+    "axios": "0.21.1",
     "bcryptjs": "2.4.3",
     "element-ui": "1.3.4",
     "jsonwebtoken": "7.4.1",
